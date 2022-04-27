@@ -1,14 +1,14 @@
-package magazynOwocow;
+package magazynowocow;
 
 import java.util.ArrayList;
 
-public class Magazyn{
+public class Magazine{
 
     private int koniec=0;
     private double waga=0;
-    private ArrayList<Owoce> magazyn = new ArrayList<>();
+    private ArrayList<Fruit> magazyn = new ArrayList<>();
 
-    public void dodajDoMagazynu(Owoce owoce){
+    public void addToMagazine(Fruit owoce){
         if (magazyn.size()==10){
             System.out.println("Magazyn osiągnął maksymalną ilość owoców!");
         }
@@ -23,7 +23,7 @@ public class Magazyn{
 
     }
 
-    public void wyswietlMagazyn(){
+    public void displayMagazine(){
         if (magazyn.size()==0){
             System.out.println("Nie ma żadnych owoców w magazynie");
         }
@@ -35,17 +35,17 @@ public class Magazyn{
 
     }
 
-    public void kupZMagazynu(int x){
+    public void buyFromMagazine(int x){
             System.out.println("Kupiłeś: " + magazyn.get(x-1));
             waga -= magazyn.get(x-1).getWaga();
             magazyn.remove(x-1);
     }
 
-    public float pozostaloMiejsca(){
-        return 5-(float)waga;
+    public double pozostaloMiejsca(){
+        return 5-waga;
     }
 
-    public void Koniec(){
+    public void End(){
         if (magazyn.size() == 0 ){
             System.out.println("Brak towaru!");
             koniec++;

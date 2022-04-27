@@ -1,4 +1,4 @@
-package magazynOwocow;
+package magazynowocow;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -9,7 +9,8 @@ public class Main {
         boolean skonczPetle = true;
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
-        Magazyn magazyn = new Magazyn();
+        ChoiceFruit choiceFruit = new ChoiceFruit();
+        Magazine magazyn = new Magazine();
         System.out.println();
         System.out.println("Magazyn owoców");
         while (skonczPetle) {
@@ -21,13 +22,10 @@ public class Main {
             System.out.println("4 - Wyjdź z magazynu");
             switch (scanner.nextInt()) {
                 case 1:
-                    System.out.println("Wybierz jaki chcesz dodać owoc do magazynu:");
-                    System.out.println("1 - Pomarańcz");
-                    System.out.println("2 - Jabłko");
-                    System.out.println("3 - Gruszke");
+                    choiceFruit.SETOPTIONCHOOSER();
                     switch (scanner.nextInt()) {
                         case 1:
-                            Pomarańcze pomarańcze = new Pomarańcze();
+                            Orange pomarańcze = new Orange();
                             boolean skonczDrugaPetle = true;
                             while (skonczDrugaPetle) {
                                 System.out.println("1 - Wyświetl kontynent, z którego są pomarańcze");
@@ -37,11 +35,11 @@ public class Main {
                                 System.out.println("5 - Dodaj owoc do magazynu");
                                 switch (scanner.nextInt()) {
                                     case 1:
-                                        pomarańcze.wyswietlKontynenty();
+                                        pomarańcze.displayContinent();
                                         break;
                                     case 2:
                                         System.out.print("Wpisz cyfrę odpowiedniego kontynentu: ");
-                                        pomarańcze.wybierzKontynent(scanner.nextInt());
+                                        pomarańcze.choiceContinent(scanner.nextInt());
                                         break;
                                     case 3:
                                         System.out.print("Podaj wartość: ");
@@ -60,7 +58,7 @@ public class Main {
                                         }
                                         break;
                                     case 5:
-                                        magazyn.dodajDoMagazynu(pomarańcze);
+                                        magazyn.addToMagazine(pomarańcze);
                                         skonczDrugaPetle = false;
                                         break;
                                     default:
@@ -72,7 +70,7 @@ public class Main {
 
 
                         case 2:
-                            Jabłka jabłka = new Jabłka();
+                            Apple jabłka = new Apple();
                             boolean skonczTrzeciaPetle = true;
                             while (skonczTrzeciaPetle) {
                                 System.out.println("1 - Wyświetl typy jabłek");
@@ -82,11 +80,11 @@ public class Main {
                                 System.out.println("5 - Dodaj owoc do magazynu");
                                 switch (scanner.nextInt()) {
                                     case 1:
-                                        jabłka.wyswietlTypy();
+                                        jabłka.displayType();
                                         break;
                                     case 2:
                                         System.out.print("Wpisz cyfrę odpowiedniego typu: ");
-                                        jabłka.wybierzTyp(scanner.nextInt());
+                                        jabłka.choiceType(scanner.nextInt());
                                         break;
                                     case 3:
                                         System.out.print("Podaj wartość: ");
@@ -105,7 +103,7 @@ public class Main {
                                         }
                                         break;
                                     case 5:
-                                        magazyn.dodajDoMagazynu(jabłka);
+                                        magazyn.addToMagazine(jabłka);
                                         skonczTrzeciaPetle = false;
                                         break;
                                     default:
@@ -117,7 +115,7 @@ public class Main {
                             break;
 
                         case 3:
-                            Gruszki gruszki = new Gruszki();
+                            Pear gruszki = new Pear();
                             boolean skonczCzwartaPetle = true;
                             while (skonczCzwartaPetle) {
                                 System.out.println("1 - Wyświetl cechy okresu zbioru gruszek");
@@ -127,11 +125,11 @@ public class Main {
                                 System.out.println("5 - Dodaj owoc do magazynu");
                                 switch (scanner.nextInt()) {
                                     case 1:
-                                        gruszki.wyswietlCechy();
+                                        gruszki.displayCharacter();
                                         break;
                                     case 2:
                                         System.out.print("Wpisz cyfrę odpowiedniej cechy: ");
-                                        gruszki.wybierzCechy(scanner.nextInt());
+                                        gruszki.choiceCharacter(scanner.nextInt());
                                         break;
                                     case 3:
                                         System.out.print("Podaj wartość: ");
@@ -150,7 +148,7 @@ public class Main {
                                         }
                                         break;
                                     case 5:
-                                        magazyn.dodajDoMagazynu(gruszki);
+                                        magazyn.addToMagazine(gruszki);
                                         skonczCzwartaPetle = false;
                                         break;
                                     default:
@@ -163,18 +161,18 @@ public class Main {
 
                     }
                 case 2:
-                    magazyn.wyswietlMagazyn();
+                    magazyn.displayMagazine();
                     break;
                 case 3:
                     try {
-                        magazyn.Koniec();
+                        magazyn.End();
                         if (magazyn.getKoniec() == 1) {
                             skonczPetle = false;
                         }
                         else{
-                            magazyn.wyswietlMagazyn();
+                            magazyn.displayMagazine();
                             System.out.print("Wybierz pozycje, która Ciebie interesuje: ");
-                            magazyn.kupZMagazynu(scanner.nextInt());
+                            magazyn.buyFromMagazine(scanner.nextInt());
                         }
                     }
                     catch(IndexOutOfBoundsException e){

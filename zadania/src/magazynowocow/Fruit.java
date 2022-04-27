@@ -1,6 +1,6 @@
-package magazynOwocow;
+package magazynowocow;
 
-public class Owoce {
+public class Fruit {
 
     private double waga;
     private double cena;
